@@ -1,0 +1,58 @@
+USE WAREHOUSE INEURON;
+CREATE DATABASE CONSTRAINTS;
+USE DATABASE CONSTRAINTS;
+DROP TABLE TEST_PRIMARYKEY;
+------------------------------------PRIMARY KEY----------------------------------------------------
+CREATE TABLE TEST_PRIMARYKEY
+        (
+        TEST_ID INT NOT NULL,
+        TEST_NAME VARCHAR(30),
+        TEST_MAIL_ID VARCHAR(30),
+        TEST_ADDRESS VARCHAR(30),
+        PRIMARY KEY(TEST_ID)
+        );
+SELECT * FROM TEST_PRIMARYKEY;
+
+INSERT INTO TEST_PRIMARYKEY VALUES (1,'RAKESH','rakeshyatish@gmail.com','BIJAPUR'),
+                                    (2,'BASAVRAJU','basavraju@gmail.com','PUNE'),
+                                    (3,'PAVAN','pavan@gmail.com','bangalore'),
+                                    (4,'VIKRAM','vikram@gmail.com','CHENNAI'),
+                                    (5,'PRASHANT','prashant@gmail.com','NEWDELHI');
+                                    
+                                    
+---------------------------------DEFAULT CONSTRAINT------------------------------
+DROP TABLE TEST_DEFAULT;
+
+CREATE OR REPLACE TABLE TEST_DEFAULT
+        (
+        TEST_ID STRING NOT NULL DEFAULT 'ROLL_NUMBER',
+        TEST_NAME VARCHAR(30),
+        TEST_MAIL_ID VARCHAR(30),
+        TEST_ADDRESS VARCHAR(30)
+        );
+        
+INSERT INTO TEST_DEFAULT(TEST_NAME,TEST_MAIL_ID,TEST_ADDRESS) VALUES ('RAKESH','rakeshyatish@gmail.com','BIJAPUR'),  ----// COLUMN MAPPING IS USED
+                                ('BASAVRAJU','basavraju@gmail.com','PUNE'),
+                                ('PAVAN','pavan@gmail.com','bangalore'),
+                                ('VIKRAM','vikram@gmail.com','CHENNAI'),
+                                ('PRASHANT','prashant@gmail.com','NEWDELHI');
+                            
+SELECT * FROM TEST_DEFAULT;
+
+--------------------------------------UNIQUE CONSTRAINT-------------------------
+DROP TABLE TEST_UNIQUE;
+CREATE TABLE TEST_UNIQUE
+       (
+        TEST_ID STRING NOT NULL DEFAULT 'ROLL_NUMBER',
+        TEST_NAME VARCHAR(30),
+        TEST_MAIL_ID VARCHAR(30) UNIQUE,
+        TEST_ADDRESS VARCHAR(30)
+       );
+-------------------------lets enter two records having same email id---------------------------------
+INSERT INTO TEST_UNIQUE(TEST_NAME,TEST_MAIL_ID,TEST_ADDRESS) VALUES ('RAKESH','rakeshyatish@gmail.com','BIJAPUR'),  ----// COLUMN MAPPING IS USED
+                                ('BASAVRAJU','basavraju@gmail.com','PUNE'),
+                                ('PAVAN','pavan@gmail.com','bangalore'),
+                                ('VIKRAM','pavan@gmail.com','CHENNAI'),
+                                ('PRASHANT','prashant@gmail.com','NEWDELHI');    
+SELECT * FROM TEST_UNIQUE;
+-------------------------ERROR:In this case NO two TEST_MAIL_ID will be same, so to avoid it we use UNIQUE constraint------------------------
