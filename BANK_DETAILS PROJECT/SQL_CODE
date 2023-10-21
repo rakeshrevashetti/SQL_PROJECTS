@@ -94,3 +94,5 @@ INSERT INTO RR_BANK_DETAILS VALUES (58,'MANAGEMENT','MARRIED','TERTIARY','NO',11
   
   SELECT AVG(BALANCE) FROM BANK_VIEW WHERE JOB ='SINGER';
   
+ ----------------------------------------------------------------------------------------------------------------------------------
+# Making some changes intentionally for learning git pull requests.
